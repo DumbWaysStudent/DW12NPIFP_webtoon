@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Item, Input, Icon } from 'native-base';
+import { View, Text, StyleSheet } from 'react-native';
+import { Item, Input } from 'native-base';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Search extends Component {
     constructor(props) {
@@ -11,10 +13,27 @@ export default class Search extends Component {
 
     render() {
         return (
-            <Item regular>
-                <Input placeholder='Search' />
-                <Icon active name='search' />
-            </Item>
+            <View style={styles.divSlide}>
+                <Item regular>
+                    <Input placeholder='Search' />
+                    <View style={styles.searchBut}>
+                        <Icon active name='md-search' style={styles.search} />
+                    </View>
+                </Item>
+            </View>
         );
     }
 }
+const styles = StyleSheet.create({
+    divSlide: {
+        flex: 1,
+        marginVertical: 10,
+        borderWidth: 2,
+    },
+    searchBut: {
+        marginRight: 20,
+    },
+    search: {
+        fontSize: 20
+    }
+})

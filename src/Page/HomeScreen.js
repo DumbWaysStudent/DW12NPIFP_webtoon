@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
-// import { ScrollView, Image } from 'native-base';
 
 import Search from '../component/Search';
+import ImageSlide from './../component/ImageSlide'
+import FavoriteList from './../component/FavoriteList'
+import AllList from './../component/AllList'
 
 export default class HomeScreen extends Component {
     constructor(props) {
@@ -13,13 +15,20 @@ export default class HomeScreen extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.scrollView}>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
                 <Search style={styles.search} />
-                <ScrollView horizontal={true}>
-                    <Text>
-                        HomeScreenadskndasdaskdbiasndkansd
+                <ImageSlide />
+                <View style={{ paddingVertical: 10 }}>
+                    <Text style={{ fontSize: 30 }}>
+                        Favorite
                     </Text>
-                </ScrollView>
+                    <FavoriteList />
+                </View>
+                <Text style={{ fontSize: 30 }}>
+                    All
+                </Text>
+                <AllList />
+
             </ScrollView>
         );
     }
@@ -29,9 +38,11 @@ const styles = StyleSheet.create({
     scrollView: {
         marginHorizontal: 10,
         flex: 1,
-        backgroundColor: 'tomato',
     },
     search: {
         marginHorizontal: 40
+    },
+    favHorizontal: {
+        flexDirection: 'row'
     }
 });
