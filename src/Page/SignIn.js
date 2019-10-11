@@ -53,8 +53,8 @@ export default class SignIn extends Component {
                     <Input autoCapitalize='none' secureTextEntry={this.state.hiddenPass} value={this.state.password} onChangeText={(password) => this.setState({ password })} />
                     <Icon active name={this.state.icon} onPress={() => this._changeIcon()} />
                 </Item>
-                <Button block success style={styles.buttonLogin} onPress={() => this.props.navigation.navigate('MainNavigation')}><Text> Sign In </Text></Button>
-                {/* <Button block success style={styles.buttonLogin} onPress={() => this.authEmailPassword()}><Text> Sign In </Text></Button> */}
+                {/* <Button block success style={styles.buttonLogin} onPress={() => this.props.navigation.navigate('MainNavigation')}><Text> Sign In </Text></Button> */}
+                <Button block success style={styles.buttonLogin} onPress={() => this.authEmailPassword()}><Text> Sign In </Text></Button>
             </View>
         );
     }
