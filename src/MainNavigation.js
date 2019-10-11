@@ -1,12 +1,13 @@
 import React from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Icon } from 'native-base'
 
 import HomeScreen from './Page/HomeScreen';
 import Favorite from './Page/Favorite';
 import Profile from './Page/Profile';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/Ionicons';
 
 const MemberNav = createBottomTabNavigator({
     HomeScreen: {
