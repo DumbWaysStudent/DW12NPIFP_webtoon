@@ -8,8 +8,8 @@ export default class SignIn extends Component {
         this.state = {
             email: '',
             password: '',
-            trueEmail: 'abc@gmail.com',
-            truePass: 'abcdef',
+            trueEmail: '1@1.1',
+            truePass: '1',
             hiddenPass: true,
             icon: 'eye',
         };

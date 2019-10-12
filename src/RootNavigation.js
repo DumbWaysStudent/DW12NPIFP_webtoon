@@ -7,7 +7,7 @@ import SignIn from './Page/SignIn';
 import MainNavigation from './MainNavigation';
 import DetailWebtoon from './Page/DetailWebtoon';
 import DetailEpisode from './Page/DetailEpisode';
-import Profile from './Page/Profile';
+import EditProfile from './Page/EditProfile';
 
 const LoginNav = createStackNavigator({
     login: {
@@ -40,6 +40,12 @@ const LoginNav = createStackNavigator({
             headerRightContainerStyle: {
                 marginEnd: 15,
             },
+        }
+    },
+    EditProfile: {
+        screen: EditProfile,
+        navigationOptions: {
+            header: null,
         }
     },
 })
