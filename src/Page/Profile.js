@@ -32,7 +32,7 @@ export default class Profile extends Component {
                     <Text style={{ fontSize: 25 }}>{this.props.navigation.getParam('name') ? this.props.navigation.getParam('name') : this.state.name}</Text>
                 </View>
                 <View style={styles.buttonView}>
-                    <Button full success>
+                    <Button full success onPress={() => this.props.navigation.navigate('MyWebtoon')}>
                         <Text style={{ color: 'white', fontSize: 20, justifyContent: 'flex-start' }}>My Webtoon Creation</Text>
                     </Button>
                 </View>

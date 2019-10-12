@@ -8,6 +8,8 @@ import MainNavigation from './MainNavigation';
 import DetailWebtoon from './Page/DetailWebtoon';
 import DetailEpisode from './Page/DetailEpisode';
 import EditProfile from './Page/EditProfile';
+import MyWebtoon from './Page/MyWebtoon';
+import EditMyWebtoon from './Page/EditMyWebtoon';
 
 const LoginNav = createStackNavigator({
     login: {
@@ -48,6 +50,19 @@ const LoginNav = createStackNavigator({
             header: null,
         }
     },
+    MyWebtoon: {
+        screen: MyWebtoon,
+        navigationOptions: {
+            headerTitle: 'My Webtoon'
+        }
+    },
+    EditMyWebtoon: {
+        screen: EditMyWebtoon,
+        navigationOptions: {
+            headerTitle: 'The Secret Of Angel'
+        }
+    },
+
 })
 
 export default createAppContainer(LoginNav);
