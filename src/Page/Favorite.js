@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet, FlatList } from 'react-native';
 import { Button, Icon } from 'native-base';
 
 import Search from '../component/Search';
