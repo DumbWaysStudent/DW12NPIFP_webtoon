@@ -169,6 +169,171 @@ export default class MyWebtoon extends Component {
                     },
                     ]
                 }]
+            },
+            {
+                id: 3,
+                title: 'Young Mom',
+                episode: 60,
+                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                image: [{
+                    id: 0,
+                    title: 'Episode 1',
+                    date: '19-09-2010',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 1,
+                    title: 'Episode 2',
+                    date: '09-11-2022',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 2,
+                    title: 'Episode 3',
+                    date: '04-12-2000',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }]
+            },
+            {
+                id: 3,
+                title: 'Young Mom',
+                episode: 60,
+                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                image: [{
+                    id: 0,
+                    title: 'Episode 1',
+                    date: '19-09-2010',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 1,
+                    title: 'Episode 2',
+                    date: '09-11-2022',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 2,
+                    title: 'Episode 3',
+                    date: '04-12-2000',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }]
+            },
+            {
+                id: 3,
+                title: 'Young Mom',
+                episode: 60,
+                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                image: [{
+                    id: 0,
+                    title: 'Episode 1',
+                    date: '19-09-2010',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 1,
+                    title: 'Episode 2',
+                    date: '09-11-2022',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }, {
+                    id: 2,
+                    title: 'Episode 3',
+                    date: '04-12-2000',
+                    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+                    image: [{
+                        title: 'Cover',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    {
+                        title: 'Intro',
+                        date: '19-09-2010',
+                        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+                    },
+                    ]
+                }]
             }]
         };
     }
@@ -196,6 +361,19 @@ export default class MyWebtoon extends Component {
 
                     )}
                 />
+                <View style={style.button}>
+                    <Button
+                        onPress={() => this.props.navigation.navigate('CreateWebtoon')}
+                        rounded
+                        warning
+                        style={{ height: 55 }}>
+                        <Icon
+                            name='plus'
+                            type='Entypo'
+                            style={{ fontSize: 24 }}
+                        />
+                    </Button>
+                </View>
             </View >
         );
     }
@@ -213,7 +391,6 @@ const style = StyleSheet.create({
         marginBottom: 20
     },
     title: {
-        fontFamily: 'Roboto',
         alignSelf: 'flex-start',
         paddingTop: 20,
         fontWeight: 'bold',
@@ -221,7 +398,6 @@ const style = StyleSheet.create({
         paddingLeft: 10
     },
     titleText: {
-        fontFamily: 'Roboto',
         alignSelf: 'center',
         position: 'absolute',
         fontSize: 16,
@@ -229,9 +405,9 @@ const style = StyleSheet.create({
     },
     button: {
         position: 'absolute',
-        height: 55,
+        height: 70,
         alignSelf: 'flex-end',
-        marginTop: 700,
+        marginTop: "160%",
         paddingRight: 20
 
     }
