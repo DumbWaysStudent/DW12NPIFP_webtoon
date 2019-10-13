@@ -9,9 +9,10 @@ import DetailWebtoon from './Page/DetailWebtoon';
 import DetailEpisode from './Page/DetailEpisode';
 import EditProfile from './Page/EditProfile';
 import MyWebtoon from './Page/MyWebtoon';
-import EditMyWebtoon from './Page/EditMyWebtoon';
 import CreateWebtoon from './Page/CreateWebtoon';
 import CreateEpisode from './Page/CreateEpisode';
+import EditMyWebtoon from './Page/EditMyWebtoon';
+import EditEpisode from './Page/EditEpisode';
 
 const LoginNav = createStackNavigator({
     login: {
@@ -61,7 +62,7 @@ const LoginNav = createStackNavigator({
     EditMyWebtoon: {
         screen: EditMyWebtoon,
         navigationOptions: {
-            headerTitle: 'The Secret Of Angel'
+            header: null
         }
     },
     CreateWebtoon: {
@@ -70,8 +71,8 @@ const LoginNav = createStackNavigator({
             header: null
         },
     },
-    CreateEpisode: {
-        screen: CreateEpisode,
+    EditEpisode: {
+        screen: EditEpisode,
         navigationOptions: {
             header: null
         },
