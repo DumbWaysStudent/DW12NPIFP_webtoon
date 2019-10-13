@@ -11,6 +11,7 @@ import EditProfile from './Page/EditProfile';
 import MyWebtoon from './Page/MyWebtoon';
 import EditMyWebtoon from './Page/EditMyWebtoon';
 import CreateWebtoon from './Page/CreateWebtoon';
+import CreateEpisode from './Page/CreateEpisode';
 
 const LoginNav = createStackNavigator({
     login: {
@@ -66,12 +67,12 @@ const LoginNav = createStackNavigator({
     CreateWebtoon: {
         screen: CreateWebtoon,
         navigationOptions: {
-            headerTitle: 'Create Webtoon',
-            // headerRight: <Button transparent onPress={() => this.props.navigation.navigate('MyWebtoon')}>
-            //     <Icon style={{ color: 'orange' }} name='check' type='FontAwesome' size={35} />
-            // </Button>,
-            // headerRightContainerStyle: {
-            //     marginEnd: 15,
+            header: null
+        },
+    },
+    CreateEpisode: {
+        screen: CreateEpisode,
+        navigationOptions: {
             header: null
         },
     }
