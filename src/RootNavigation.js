@@ -77,5 +77,23 @@ const LoginNav = createStackNavigator({
         },
     }
 })
+const onShare = async () => {
+    try {
+        const result = await Share.share({
+            message: 'Aplikasi Webtoon Ardi ini',
+        });
+        if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+                Alert.alert('1');
+            } else {
+                Alert.alert('2');
+            }
+        } else if (result.action === Share.dismissedAction) {
+            Alert.alert('3');
+        }
+    } catch (error) {
+        Alert.alert(error.message);
+    }
+};
 
 export default createAppContainer(LoginNav);
