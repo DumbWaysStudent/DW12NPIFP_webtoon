@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 
 export default class DetailEpisode extends Component {
     constructor(props) {

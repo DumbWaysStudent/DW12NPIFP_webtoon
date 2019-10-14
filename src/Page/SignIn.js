@@ -46,11 +46,11 @@ export default class SignIn extends Component {
                 </View>
                 <Text style={styles.emailPassDetail}>Email</Text>
                 <Item regular>
-                    <Input autoCapitalize='none' value={this.state.email} onChangeText={(email) => this.setState({ email })} />
+                    <Input autoCapitalize='none' returnKeyType='next' value={this.state.email} onChangeText={(email) => this.setState({ email })} />
                 </Item>
                 <Text style={styles.emailPassDetail}>Password</Text>
                 <Item regular style={styles.passForm}>
-                    <Input autoCapitalize='none' secureTextEntry={this.state.hiddenPass} value={this.state.password} onChangeText={(password) => this.setState({ password })} />
+                    <Input autoCapitalize='none' returnKeyType='go' secureTextEntry={this.state.hiddenPass} value={this.state.password} onChangeText={(password) => this.setState({ password })} />
                     <Icon active name={this.state.icon} onPress={() => this._changeIcon()} />
                 </Item>
                 {/* <Button block success style={styles.buttonLogin} onPress={() => this.props.navigation.navigate('MainNavigation')}><Text> Sign In </Text></Button> */}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, Image } from 'react-native';
-import { Container, Text, Header, Left, Body, Right, Button, Icon, Title, Item, Input, Label, CardItem, View } from 'native-base';
+import { Text, Header, Left, Body, Right, Button, Icon, Title, CardItem, View } from 'native-base';
 import ImagePicker from 'react-native-image-picker';
 
 export default class CreateEpisode extends Component {

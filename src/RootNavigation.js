@@ -3,7 +3,9 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, HeaderStyleInterpolator } from 'react-navigation-stack';
 import { Icon, Button } from 'native-base'
 
+import SplashScreen from './Page/SplashScreen';
 import SignIn from './Page/SignIn';
+import SignUp from './Page/SignUp';
 import MainNavigation from './MainNavigation';
 import DetailWebtoon from './Page/DetailWebtoon';
 import DetailEpisode from './Page/DetailEpisode';
@@ -15,8 +17,20 @@ import EditMyWebtoon from './Page/EditMyWebtoon';
 import EditEpisode from './Page/EditEpisode';
 
 const LoginNav = createStackNavigator({
+    SplashScreen: {
+        screen: SplashScreen,
+        navigationOptions: {
+            header: null,
+        }
+    },
     login: {
         screen: SignIn,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    signup: {
+        screen: SignUp,
         navigationOptions: {
             header: null,
         }
@@ -67,6 +81,12 @@ const LoginNav = createStackNavigator({
     },
     CreateWebtoon: {
         screen: CreateWebtoon,
+        navigationOptions: {
+            header: null
+        },
+    },
+    CreateEpisode: {
+        screen: CreateEpisode,
         navigationOptions: {
             header: null
         },

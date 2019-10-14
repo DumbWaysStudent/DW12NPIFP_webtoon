@@ -37,7 +37,7 @@ export default class Profile extends Component {
                     </Button>
                 </View>
                 <View>
-                    <Button full transparent>
+                    <Button full transparent onPress={() => this.props.navigation.navigate('login')}>
                         <Text style={{ color: 'red', fontSize: 20, justifyContent: 'flex-start' }}>Log Out</Text>
                     </Button>
                 </View>

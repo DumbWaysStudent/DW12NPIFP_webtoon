@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
-import { Container, Text, Header, Left, Body, Right, Button, Icon, Title, Item, Input, Label, CardItem } from 'native-base';
+import { Text, Header, Left, Body, Right, Button, Icon, Title, Item, Input, Label, CardItem } from 'native-base';
 
 export default class EditMyWebtoon extends Component {
     constructor(props) {
