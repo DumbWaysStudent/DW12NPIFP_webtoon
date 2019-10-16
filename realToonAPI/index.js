@@ -29,6 +29,7 @@ const AuthController = require('./controllers/auth')
 const GenresController = require('./controllers/genres')
 const ComicsController = require('./controllers/comics')
 const DetailComicsController = require('./controllers/detailcomics')
+const DetailEpisodesController = require('./controllers/detailepisodes')
 
 //middlewares
 const { authenticated } = require('./middleware')
@@ -47,13 +48,16 @@ app.group('/api/v1', (router) => {
 
     //API comics
     router.get('/comics', ComicsController.index)
-    router.get('/comic/:id', ComicsController.show)
-    router.post('/comic', ComicsController.store)
-    router.patch('/comic/:id', ComicsController.update)
-    router.delete('/comic/:id', ComicsController.delete)
+    // router.get('/comic/:id', ComicsController.show)
+    // router.post('/comic', ComicsController.store)
+    // router.patch('/comic/:id', ComicsController.update)
+    // router.delete('/comic/:id', ComicsController.delete)
 
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
+
+    //API Detail Episodes
+    router.get('/comic/:id_webtoon/episode/:id_episode', DetailEpisodesController.showEpisodes)
 
 
     //user API
