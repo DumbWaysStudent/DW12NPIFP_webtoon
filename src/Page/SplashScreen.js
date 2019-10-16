@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     textButtonSignUp: {
         color: 'white',
         fontSize: 15,
-        fontFamily: 'centuryGothic',
+        fontFamily: 'GOTHIC',
         width: 300,
         textAlign: 'center'
 
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     textButtonSignIn: {
         color: '#01CB75',
         fontSize: 15,
-        fontFamily: 'centuryGothic',
+        fontFamily: 'GOTHIC',
         width: 300,
         textAlign: 'center'
 

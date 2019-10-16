@@ -26,14 +26,22 @@ app.use(bodyParser.json())
 
 //controllers
 const AuthController = require('./controllers/auth')
+const WebtoonsController = require('./controllers/list_comics')
 
 //middlewares
 const { authenticated } = require('./middleware')
 
 app.group('/api/v1', (router) => {
     //auth API
-    router.post('/login', AuthController.login)
-    router.post('/register', AuthController.register)
+    router.post('/login', AuthController.login) //for Log In
+    router.post('/register', AuthController.register) //for Sign Up
+
+    //API comics
+    router.get('/webtoons', WebtoonsController.index)
+    router.get('/webtoon/:id', WebtoonsController.show)
+    router.post('/webtoon', WebtoonsController.store)
+    router.patch('/webtoon/:id', WebtoonsController.update)
+    router.delete('/webtoon/:id', WebtoonsController.delete)
 
     //user API
     // router.get('/users', UserController.index)

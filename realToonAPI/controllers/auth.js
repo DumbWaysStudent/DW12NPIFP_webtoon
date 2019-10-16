@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken')
 const models = require('../../models')
 const User = models.users
 
+//bisa menggunakan async await atau .then .catch 
+
 exports.login = (req, res) => {
     const email = req.body.email
     const password = req.body.password
@@ -12,7 +14,7 @@ exports.login = (req, res) => {
             if (user) {
                 const token = jwt.sign({ userId: user.id }, 'my-secret-key')
                 res.send({
-                    user,
+                    username: user.username,
                     token
                 })
             } else {
@@ -24,11 +26,10 @@ exports.login = (req, res) => {
         })
 }
 
-exports.register = (req, res) => {
-    User.create(req.body).then(user => {
-        res.send({
-            message: "success",
-            user
-        })
+exports.register = async (req, res) => {
+    const signUp = await User.create(req.body).then({})
+    res.send({
+        message: "success",
+        email: signUp.email
     })
 }

@@ -1,16 +1,28 @@
 const models = require('./../../models')
-const User = models.users
+const Webtoons = models.list_comics
+const Users = models.users
 
 exports.index = (req, res) => {
-    User.findAll().then(users => res.send(users))
+    Webtoons.findAll({
+        include: [{
+            model: Users,
+            as: "createdby"
+        }]
+    }).then(result => res.send(result))
 }
 
 exports.show = (req, res) => {
-    User.findOne({ id: req.params.id }).then(user => res.send(user))
+    Webtoons.findOne({
+        where: { id: req.params.id },
+        include: [{
+            model: Users,
+            as: "createdby"
+        }]
+    }).then(result => res.send(result))
 }
 
 exports.store = (req, res) => {
-    User.create(req.body).then(result => {
+    Webtoons.create(req.body).then(result => {
         res.send({
             message: "success",
             result
@@ -19,7 +31,7 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    User.update(
+    Webtoons.update(
         req.body,
         { where: { id: req.params.id } }
     ).then(result => {
@@ -31,7 +43,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    User.destroy(
+    Webtoons.destroy(
         { where: { id: req.params.id } }).then(result => {
             res.send({
                 message: "success",

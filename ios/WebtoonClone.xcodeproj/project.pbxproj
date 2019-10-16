@@ -38,6 +38,10 @@
 		303AC2606E044C8D8EFE3031 /* centuryGothicB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = A3FB7C2BC53B4AD3B13C6AB7 /* centuryGothicB.TTF */; };
 		9C320E50CD924D80A02D27B6 /* centuryGothicBI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6039F5B8ABD347A3AEE045D8 /* centuryGothicBI.TTF */; };
 		2FEC097DC81448978E7A7D60 /* centuryGothicI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 8992C3625EA344B0928BFE9F /* centuryGothicI.TTF */; };
+		9A5C74ABB38146FFBFBC989D /* GOTHIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = AED5EE831461400C9A83529C /* GOTHIC.TTF */; };
+		5FADA891D39D4C9DBCE08579 /* GOTHICB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3426B60DD9DE4069AFE80EA7 /* GOTHICB.TTF */; };
+		1F048149D2324525AF60A526 /* GOTHICBI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 36AD64165AEE4ECFAB77DBFD /* GOTHICBI.TTF */; };
+		843F8E1FDEF14C9FB0622799 /* GOTHICI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D5375FBB7E2B4B14A96B3E89 /* GOTHICI.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,10 @@
 		A3FB7C2BC53B4AD3B13C6AB7 /* centuryGothicB.TTF */ = {isa = PBXFileReference; name = "centuryGothicB.TTF"; path = "../src/assets/fonts/centuryGothicB.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		6039F5B8ABD347A3AEE045D8 /* centuryGothicBI.TTF */ = {isa = PBXFileReference; name = "centuryGothicBI.TTF"; path = "../src/assets/fonts/centuryGothicBI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8992C3625EA344B0928BFE9F /* centuryGothicI.TTF */ = {isa = PBXFileReference; name = "centuryGothicI.TTF"; path = "../src/assets/fonts/centuryGothicI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AED5EE831461400C9A83529C /* GOTHIC.TTF */ = {isa = PBXFileReference; name = "GOTHIC.TTF"; path = "../src/assets/fonts/GOTHIC.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3426B60DD9DE4069AFE80EA7 /* GOTHICB.TTF */ = {isa = PBXFileReference; name = "GOTHICB.TTF"; path = "../src/assets/fonts/GOTHICB.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		36AD64165AEE4ECFAB77DBFD /* GOTHICBI.TTF */ = {isa = PBXFileReference; name = "GOTHICBI.TTF"; path = "../src/assets/fonts/GOTHICBI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5375FBB7E2B4B14A96B3E89 /* GOTHICI.TTF */ = {isa = PBXFileReference; name = "GOTHICI.TTF"; path = "../src/assets/fonts/GOTHICI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +237,10 @@
 				A3FB7C2BC53B4AD3B13C6AB7 /* centuryGothicB.TTF */,
 				6039F5B8ABD347A3AEE045D8 /* centuryGothicBI.TTF */,
 				8992C3625EA344B0928BFE9F /* centuryGothicI.TTF */,
+				AED5EE831461400C9A83529C /* GOTHIC.TTF */,
+				3426B60DD9DE4069AFE80EA7 /* GOTHICB.TTF */,
+				36AD64165AEE4ECFAB77DBFD /* GOTHICBI.TTF */,
+				D5375FBB7E2B4B14A96B3E89 /* GOTHICI.TTF */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -393,6 +405,10 @@
 				303AC2606E044C8D8EFE3031 /* centuryGothicB.TTF in Resources */,
 				9C320E50CD924D80A02D27B6 /* centuryGothicBI.TTF in Resources */,
 				2FEC097DC81448978E7A7D60 /* centuryGothicI.TTF in Resources */,
+				9A5C74ABB38146FFBFBC989D /* GOTHIC.TTF in Resources */,
+				5FADA891D39D4C9DBCE08579 /* GOTHICB.TTF in Resources */,
+				1F048149D2324525AF60A526 /* GOTHICBI.TTF in Resources */,
+				843F8E1FDEF14C9FB0622799 /* GOTHICI.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

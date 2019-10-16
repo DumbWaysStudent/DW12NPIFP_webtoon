@@ -78,6 +78,10 @@
 		<string>centuryGothicB.TTF</string>
 		<string>centuryGothicBI.TTF</string>
 		<string>centuryGothicI.TTF</string>
+		<string>GOTHIC.TTF</string>
+		<string>GOTHICB.TTF</string>
+		<string>GOTHICBI.TTF</string>
+		<string>GOTHICI.TTF</string>
 	</array>
 </dict>
 </plist>
