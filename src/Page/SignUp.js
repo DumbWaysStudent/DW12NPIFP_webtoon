@@ -26,7 +26,7 @@ export default class SignUp extends Component {
                     <Item rounded style={styles.viewUserInput}>
                         <Input style={styles.userInput} autoCapitalize='none' secureTextEntry={true} placeholder='Password' placeholderTextColor="white"></Input>
                     </Item>
-                    <Button rounded style={styles.buttonStyle} onPress={}>
+                    <Button rounded style={styles.buttonStyle}>
                         <Text style={styles.textButtonSignUp}>SIGN UP</Text>
                     </Button>
                 </View>

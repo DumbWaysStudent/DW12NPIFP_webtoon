@@ -26,22 +26,30 @@ app.use(bodyParser.json())
 
 //controllers
 const AuthController = require('./controllers/auth')
-const WebtoonsController = require('./controllers/list_comics')
+const GenresController = require('./controllers/genres')
+// const WebtoonsController = require('./controllers/list_comics')
 
 //middlewares
 const { authenticated } = require('./middleware')
 
 app.group('/api/v1', (router) => {
-    //auth API
+    //API login & register
     router.post('/login', AuthController.login) //for Log In
     router.post('/register', AuthController.register) //for Sign Up
 
+    //API genre
+    router.get('/genres', GenresController.index)
+    router.get('/genre/:id', GenresController.show)
+    router.post('/genre', GenresController.store)
+    router.patch('/genre/:id', GenresController.update)
+    router.delete('/genre/:id', GenresController.delete)
+
     //API comics
-    router.get('/webtoons', WebtoonsController.index)
-    router.get('/webtoon/:id', WebtoonsController.show)
-    router.post('/webtoon', WebtoonsController.store)
-    router.patch('/webtoon/:id', WebtoonsController.update)
-    router.delete('/webtoon/:id', WebtoonsController.delete)
+    // router.get('/webtoons', WebtoonsController.index)
+    // router.get('/webtoon/:id', WebtoonsController.show)
+    // router.post('/webtoon', WebtoonsController.store)
+    // router.patch('/webtoon/:id', WebtoonsController.update)
+    // router.delete('/webtoon/:id', WebtoonsController.delete)
 
     //user API
     // router.get('/users', UserController.index)
