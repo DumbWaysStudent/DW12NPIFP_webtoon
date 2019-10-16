@@ -30,8 +30,9 @@ const GenresController = require('./controllers/genres')
 const ComicsController = require('./controllers/comics')
 const DetailComicsController = require('./controllers/detailcomics')
 const DetailEpisodesController = require('./controllers/detailepisodes')
+const MyFavoritesController = require('./controllers/myfavorites')
 
-//middlewares
+//middleware
 const { authenticated } = require('./middleware')
 
 app.group('/api/v1', (router) => {
@@ -58,6 +59,10 @@ app.group('/api/v1', (router) => {
 
     //API Detail Episodes
     router.get('/comic/:id_webtoon/episode/:id_episode', DetailEpisodesController.showEpisodes)
+
+    //API My Favorite
+    // router.get('/favorite/:id', MyFavoritesController.getMyFavorite)
+    router.get('/favorite/:id', authenticated, MyFavoritesController.getMyFavorite)
 
 
     //user API
