@@ -31,6 +31,7 @@ const ComicsController = require('./controllers/comics')
 const DetailComicsController = require('./controllers/detailcomics')
 const DetailEpisodesController = require('./controllers/detailepisodes')
 const MyFavoritesController = require('./controllers/myfavorites')
+const MyWebtoonsController = require('./controllers/mywebtoon')
 
 //middleware
 const { authenticated } = require('./middleware')
@@ -50,8 +51,15 @@ app.group('/api/v1', (router) => {
     //API comics
     //SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
     router.get('/comics', ComicsController.index)
+
+
     //MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
-    router.get('/user/:id/comics', authenticated, ComicsController.showMyWebtoon)
+    router.get('/user/:id/comics', authenticated, MyWebtoonsController.showMyWebtoon)
+    //MEMBUAT KOMIK MILIK SENDIRI
+    router.post('/user/:id/comic', authenticated, MyWebtoonsController.storeMyWebtoon)
+    // GET SEMUA DETAIL KOMIK KITA SENDIRI
+    //Jadi pertanyaan kenapa detail webtoon nya malah keluar semua??
+    router.get('/user/:id_user/comic/:id_comic/episodes', authenticated, MyWebtoonsController.showDetailMyWebtoon)
 
     // router.get('/comic/:id', ComicsController.show)
     // router.post('/comic', ComicsController.store)

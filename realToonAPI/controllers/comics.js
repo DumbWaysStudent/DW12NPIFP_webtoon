@@ -30,24 +30,6 @@ exports.index = (req, res) => {
     }
 }
 
-//MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
-exports.showMyWebtoon = (req, res) => {
-    Webtoons.findAll({
-        where: { createdBy: req.params.id }
-    })
-        .then(result => res.send(result))
-}
-
-
-
-
-
-
-
-
-
-
-
 // Webtoons.findAll({
 //     include: [{
 //         model: Users,
