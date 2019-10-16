@@ -28,6 +28,7 @@ app.use(bodyParser.json())
 const AuthController = require('./controllers/auth')
 const GenresController = require('./controllers/genres')
 const ComicsController = require('./controllers/comics')
+const DetailComicsController = require('./controllers/detailcomics')
 
 //middlewares
 const { authenticated } = require('./middleware')
@@ -52,6 +53,8 @@ app.group('/api/v1', (router) => {
     router.delete('/comic/:id', ComicsController.delete)
 
     //API Detail comics
+    router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
+
 
     //user API
     // router.get('/users', UserController.index)
