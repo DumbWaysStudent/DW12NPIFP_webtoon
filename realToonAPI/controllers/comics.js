@@ -1,13 +1,18 @@
-const models = require('./../../models')
-const Webtoons = models.list_comics
+const models = require('../../models')
+const Webtoons = models.comics
 const Users = models.users
+// const Genres = models.genres
 
 exports.index = (req, res) => {
     Webtoons.findAll({
         include: [{
             model: Users,
-            as: "createdby"
-        }]
+            as: "created_by",
+        }
+            // {
+            //     model: Genres,
+            //     as: "genre_id"}
+        ]
     }).then(result => res.send(result))
 }
 
@@ -16,7 +21,7 @@ exports.show = (req, res) => {
         where: { id: req.params.id },
         include: [{
             model: Users,
-            as: "createdby"
+            as: "created_by"
         }]
     }).then(result => res.send(result))
 }
