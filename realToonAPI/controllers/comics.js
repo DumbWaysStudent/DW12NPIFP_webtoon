@@ -6,6 +6,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 
 
+//SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
 exports.index = (req, res) => {
     const title = req.query.title
     if (title) {
@@ -28,6 +29,24 @@ exports.index = (req, res) => {
         }).then(result => res.send(result))
     }
 }
+
+//MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
+exports.showMyWebtoon = (req, res) => {
+    Webtoons.findAll({
+        where: { createdBy: req.params.id }
+    })
+        .then(result => res.send(result))
+}
+
+
+
+
+
+
+
+
+
+
 
 // Webtoons.findAll({
 //     include: [{

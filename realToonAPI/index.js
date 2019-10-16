@@ -48,7 +48,11 @@ app.group('/api/v1', (router) => {
     router.delete('/genre/:id', GenresController.delete)
 
     //API comics
+    //SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
     router.get('/comics', ComicsController.index)
+    //MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
+    router.get('/user/:id/comics', authenticated, ComicsController.showMyWebtoon)
+
     // router.get('/comic/:id', ComicsController.show)
     // router.post('/comic', ComicsController.store)
     // router.patch('/comic/:id', ComicsController.update)
