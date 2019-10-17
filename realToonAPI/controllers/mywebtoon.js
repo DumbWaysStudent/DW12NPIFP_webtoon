@@ -1,6 +1,7 @@
 const models = require('../../models')
 const Webtoons = models.comics
 const DetailWebtoons = models.detailComics
+const DetailEpisodes = models.detailepisodes
 const Users = models.users
 
 //MY WEBTOON CREATION
@@ -91,4 +92,43 @@ exports.deleteMyEpisode = (req, res) => {
         where: { id: id_episode }
     })
         .then(res.send({ ...req.body }))
+}
+
+
+//DETAIL EPISODE / IMAGES 
+
+//GET SEMUA DETAIL EPISODE BERDASARKAN EPISODE
+
+exports.showDetailEpisodes = (req, res) => {
+    const webtoonId = req.params.id_comic
+    const episodeId = req.params.id_episode
+
+    DetailWebtoons.findOne({
+        where: { idComics: webtoonId }
+    })
+        .then(() => {
+            DetailEpisodes.findAll({
+                where: { idDetailComics: episodeId },
+                attributes: ['id', 'page', 'image'],
+                include: [{
+                    model: DetailWebtoons,
+                    as: 'detailComicId'
+                }]
+            })
+                .then(episodes => res.send(episodes))
+        })
+
+}
+
+//MEMBUAT DETAIL EPISODE DARI KOMIK KITA SENDIRI
+exports.storeDetailMyWebtoon = (req, res) => {
+    const { image, page } = req.body
+    const episodeId = req.params.id_episode
+
+    DetailEpisodes.create({
+        idDetailComics: episodeId,
+        page,
+        image
+    })
+        .then(result => res.send(result))
 }

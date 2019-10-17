@@ -74,11 +74,18 @@ app.group('/api/v1', (router) => {
     //DELTE EPISODE KOMIK SENDIRI
     router.delete('/user/:id_user/comic/:id_comic/episode/:id_episode', authenticated, MyWebtoonsController.deleteMyEpisode)
 
+    //API DETAIL EPISODE / IMAGE KOMIK KITA SENDIRI
+
+    //GET SEMUA DETAIL EPISODE KOMIK KITA SENDIRI
+    router.get('/user/:id_user/comic/:id_comic/episode/:id_episode/images', authenticated, MyWebtoonsController.showDetailEpisodes)
+    //MEMBUAT DETAIL EPISODE KITA SENDIRI
+    router.post('/user/:id_user/comic/:id_comic/episode/:id_episode/image', authenticated, MyWebtoonsController.storeDetailMyWebtoon)
+
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
 
     //API Detail Episodes
-    router.get('/comic/:id_webtoon/episode/:id_episode', DetailEpisodesController.showEpisodes)
+    router.get('/comic/:id_comic/episode/:id_episode', DetailEpisodesController.showEpisodes)
 
     //API My Favorite
     // router.get('/favorite/:id', MyFavoritesController.getMyFavorite)
