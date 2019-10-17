@@ -132,3 +132,15 @@ exports.storeDetailMyWebtoon = (req, res) => {
     })
         .then(result => res.send(result))
 }
+
+//DELETE DETAIL EPISODE DARI KOMIK KITA SENDIRI
+exports.deleteDetailMyWebtoon = (req, res) => {
+    const imageId = req.params.id_image
+
+    DetailEpisodes.destroy({
+        where: { id: imageId }
+    })
+        .then(res.send({
+            message: 'Berhasil di delete'
+        }))
+}

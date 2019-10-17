@@ -80,6 +80,8 @@ app.group('/api/v1', (router) => {
     router.get('/user/:id_user/comic/:id_comic/episode/:id_episode/images', authenticated, MyWebtoonsController.showDetailEpisodes)
     //MEMBUAT DETAIL EPISODE KITA SENDIRI
     router.post('/user/:id_user/comic/:id_comic/episode/:id_episode/image', authenticated, MyWebtoonsController.storeDetailMyWebtoon)
+    //DELETE DETAIL EPISODE KITA
+    router.delete('/user/:id_user/comic/:id_comic/episode/:id_episode/image/:id_image', authenticated, MyWebtoonsController.deleteDetailMyWebtoon)
 
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
