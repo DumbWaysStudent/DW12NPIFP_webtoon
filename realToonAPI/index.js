@@ -71,6 +71,8 @@ app.group('/api/v1', (router) => {
     router.post('/user/:id_user/comic/:id_comic/episode', authenticated, MyWebtoonsController.storeMyEpisode)
     //UPDATE DETAIL EPISODE KOMIK SENDIRI
     router.patch('/user/:id_user/comic/:id_comic/episode/:id_episode', authenticated, MyWebtoonsController.updateMyEpisode)
+    //DELTE EPISODE KOMIK SENDIRI
+    router.delete('/user/:id_user/comic/:id_comic/episode/:id_episode', authenticated, MyWebtoonsController.deleteMyEpisode)
 
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)

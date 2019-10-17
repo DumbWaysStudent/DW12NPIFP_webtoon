@@ -82,3 +82,13 @@ exports.updateMyEpisode = (req, res) => {
     )
         .then(res.send({ ...req.body }))
 }
+
+//DELETE EPISODE KOMIK SENDIRI
+exports.deleteMyEpisode = (req, res) => {
+    const { id_episode } = req.params
+
+    DetailWebtoons.destroy({
+        where: { id: id_episode }
+    })
+        .then(res.send({ ...req.body }))
+}
