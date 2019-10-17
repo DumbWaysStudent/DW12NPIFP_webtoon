@@ -55,7 +55,7 @@ exports.deleteMyWebtoon = (req, res) => {
     Webtoons.destroy({
         where: { id: idComic, createdBy: idUser }
     })
-        .then(result => res.send({
+        .then(res.send({
             id: idComic,
             message: 'Komik Telah Dihapus'
         }))
