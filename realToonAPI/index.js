@@ -69,6 +69,8 @@ app.group('/api/v1', (router) => {
     router.get('/user/:id_user/comic/:id_comic/episodes', authenticated, MyWebtoonsController.showDetailMyWebtoon)
     //MEMBUAT EPISODES DARI KOMIK KITA SENDIRI
     router.post('/user/:id_user/comic/:id_comic/episode', authenticated, MyWebtoonsController.storeMyEpisode)
+    //UPDATE DETAIL EPISODE KOMIK SENDIRI
+    router.patch('/user/:id_user/comic/:id_comic/episode/:id_episode', authenticated, MyWebtoonsController.updateMyEpisode)
 
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)

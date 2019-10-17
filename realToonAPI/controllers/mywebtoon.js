@@ -57,6 +57,7 @@ exports.showDetailMyWebtoon = (req, res) => {
 
 }
 
+//MEMBUAT EPISODES DARI KOMIK KITA SENDIRI
 exports.storeMyEpisode = (req, res) => {
     const { image, title } = req.body
 
@@ -66,4 +67,18 @@ exports.storeMyEpisode = (req, res) => {
         image
     })
         .then(result => res.send(result))
+}
+
+//UPDATE DETAIL EPISODE KOMIK SENDIRI
+exports.updateMyEpisode = (req, res) => {
+    const { image, title } = req.body
+
+    DetailWebtoons.update({
+        title,
+        image
+    }, {
+        where: { id: req.params.id_episode }
+    }
+    )
+        .then(res.send({ ...req.body }))
 }
