@@ -3,6 +3,8 @@ const Webtoons = models.comics
 const DetailWebtoons = models.detailComics
 const Users = models.users
 
+//MY WEBTOON CREATION
+
 //MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
 exports.showMyWebtoon = (req, res) => {
     Webtoons.findAll({
@@ -17,23 +19,6 @@ exports.storeMyWebtoon = (req, res) => {
         .then(
             result => res.send(result)
         )
-}
-
-// url = {your_host}/api/v1/user/{user_id}/webtoon/{webtoon_id}/episodes
-//Jadi pertanyaan kenapa detail webtoon nya malah keluar semua??
-// GET SEMUA DETAIL KOMIK KITA SENDIRI
-exports.showDetailMyWebtoon = (req, res) => {
-    const idUser = req.params.id_user
-    const idComic = req.params.id_comic
-
-    Webtoons.findAll({
-        where: { createdBy: idUser }
-    })
-        .then(() =>
-            DetailWebtoons.findAll({ where: { idComics: idComic } })
-                .then(result => res.send(result))
-        )
-
 }
 
 exports.updateMyWebtoon = (req, res) => {
@@ -61,3 +46,24 @@ exports.deleteMyWebtoon = (req, res) => {
         }))
 }
 
+
+//EPISODES MY WEBTOON CREATION
+
+// url = {your_host}/api/v1/user/{user_id}/webtoon/{webtoon_id}/episodes
+// GET SEMUA DETAIL KOMIK KITA SENDIRI
+exports.showDetailMyWebtoon = (req, res) => {
+    const idComic = req.params.id_comic
+    DetailWebtoons.findAll({ where: { idComics: idComic } }).then(result => res.send(result))
+
+}
+
+exports.storeMyEpisode = (req, res) => {
+    const { image, title } = req.body
+
+    DetailWebtoons.create({
+        idComics: req.params.id_comic,
+        title,
+        image
+    })
+        .then(result => res.send(result))
+}

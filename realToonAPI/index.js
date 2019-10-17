@@ -52,6 +52,7 @@ app.group('/api/v1', (router) => {
     //SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
     router.get('/comics', ComicsController.index)
 
+    //API MY WEBTOON CREATION
 
     //MENAMPILKAN KOMIK MILIK/BUATAN KITA SAJA
     router.get('/user/:id/comics', authenticated, MyWebtoonsController.showMyWebtoon)
@@ -61,9 +62,13 @@ app.group('/api/v1', (router) => {
     router.patch('/user/:id_user/comic/:id_comic', authenticated, MyWebtoonsController.updateMyWebtoon)
     //DELETE KOMIK MILIK SENDIRI
     router.delete('/user/:id_user/comic/:id_comic', authenticated, MyWebtoonsController.deleteMyWebtoon)
-    // GET SEMUA DETAIL KOMIK KITA SENDIRI
-    //Jadi pertanyaan kenapa detail webtoon nya malah keluar semua??
+
+    //API EPISODES MY WEBTOON CREATION
+
+    // GET SEMUA DETAIL KOMIK DARI KOMIK KITA SENDIRI
     router.get('/user/:id_user/comic/:id_comic/episodes', authenticated, MyWebtoonsController.showDetailMyWebtoon)
+    //MEMBUAT EPISODES DARI KOMIK KITA SENDIRI
+    router.post('/user/:id_user/comic/:id_comic/episode', authenticated, MyWebtoonsController.storeMyEpisode)
 
     //API Detail comics
     router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
