@@ -36,3 +36,28 @@ exports.showDetailMyWebtoon = (req, res) => {
 
 }
 
+exports.updateMyWebtoon = (req, res) => {
+    const { title, genre, bumpImg, thumbImg } = req.body
+    Webtoons.update({
+        title,
+        genre,
+        bumpImg,
+        thumbImg
+    },
+        {
+            where: { id: req.params.id_comic, createdBy: req.params.id_user }
+        }).then(res.send(req.body))
+}
+
+exports.deleteMyWebtoon = (req, res) => {
+    const idUser = req.params.id_user
+    const idComic = req.params.id_comic
+    Webtoons.destroy({
+        where: { id: idComic, createdBy: idUser }
+    })
+        .then(result => res.send({
+            id: idComic,
+            message: 'Komik Telah Dihapus'
+        }))
+}
+
