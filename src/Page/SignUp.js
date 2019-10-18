@@ -1,13 +1,47 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
 import { Button, Input, Item } from 'native-base';
+import axios from 'axios';
+
+import { API_TOON } from '../component/server'
 
 export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            inputUsername: '',
+            inputEmail: '',
+            inputPassword: '',
+            inputImage: 'https://www.clipartwiki.com/clipimg/detail/248-2480210_user-staff-man-profile-person-icon-circle-png.png'
         };
     }
+
+    registerValue() {
+        const { inputEmail, inputPassword, inputUsername, inputImage } = this.state
+        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const { navigation } = this.props
+        if (inputUsername || inputEmail || inputPassword != '') {
+            if (reg.test(inputEmail)) {
+                axios.post(`${API_TOON}/api/v1/register`, {
+                    email: inputEmail,
+                    username: inputUsername,
+                    password: inputPassword,
+                    image: inputImage
+                })
+                    .then(async (result) => {
+                        await navigation.navigate('login')
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            } else {
+                alert('Email tidak sesuai format')
+            }
+        } else {
+            alert('Maaf form tidak boleh kosong')
+        }
+    }
+
 
     render() {
         return (
@@ -18,15 +52,15 @@ export default class SignUp extends Component {
                 </View>
                 <View style={styles.buttonStyleView}>
                     <Item rounded style={styles.viewUserInput}>
-                        <Input style={styles.userInput} autoCapitalize='none' placeholder='Username' placeholderTextColor="white"></Input>
+                        <Input autoCapitalize='none' placeholder='Username' placeholderTextColor="white" style={styles.txtFormStyle} value={this.state.inputUsername} onChangeText={(text) => this.setState({ inputUsername: text })}></Input>
                     </Item>
                     <Item rounded style={styles.viewUserInput}>
-                        <Input style={styles.userInput} autoCapitalize='none' placeholder='Email' placeholderTextColor="white"></Input>
+                        <Input autoCapitalize='none' placeholder='Email' placeholderTextColor="white" style={styles.txtFormStyle} value={this.state.inputEmail} onChangeText={(text) => this.setState({ inputEmail: text })}></Input>
                     </Item>
                     <Item rounded style={styles.viewUserInput}>
-                        <Input style={styles.userInput} autoCapitalize='none' secureTextEntry={true} placeholder='Password' placeholderTextColor="white"></Input>
+                        <Input autoCapitalize='none' secureTextEntry={true} placeholder='Password' placeholderTextColor="white" style={styles.txtFormStyle} value={this.state.inputPassword} onChangeText={(text) => this.setState({ inputPassword: text })}></Input>
                     </Item>
-                    <Button rounded style={styles.buttonStyle}>
+                    <Button rounded style={styles.buttonStyle} onPress={() => this.registerValue()}>
                         <Text style={styles.textButtonSignUp}>SIGN UP</Text>
                     </Button>
                 </View>
@@ -34,6 +68,7 @@ export default class SignUp extends Component {
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     splashScreenbg: {
@@ -89,12 +124,11 @@ const styles = StyleSheet.create({
 
     },
     viewUserInput: {
-        height: 40,
-        marginVertical: 10
-    },
-    userInput: {
-        width: 300,
+        height: 50,
+        marginVertical: 5,
         backgroundColor: '#01CB75',
-        color: 'white'
-    }
+    },
+    txtFormStyle: {
+        color: 'white',
+    },
 });

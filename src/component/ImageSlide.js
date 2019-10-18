@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Slideshow from 'react-native-image-slider-show';
+import axios from 'axios';
 
 export default class ImageSlide extends Component {
     constructor(props) {
@@ -52,7 +53,8 @@ export default class ImageSlide extends Component {
 
 const styles = StyleSheet.create({
     slide: {
-        borderWidth: 2
-
+        borderWidth: 3,
+        borderColor: '#ecf0f1',
+        marginTop: 15
     }
 })

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { Item, Input, Button, Icon, Card, CardItem, } from 'native-base';
+import axios from 'axios';
+
+import { API_TOON } from '../component/server'
 
 import Search from '../component/Search';
 import ImageSlide from './../component/ImageSlide'
@@ -10,38 +13,38 @@ export default class HomeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: [
-                {
-                    title: 'The Secret of Angel',
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg'
-                }, {
-                    title: 'Pasutri Gaje',
-                    img: 'https://otaku.dafunda.com/wp-content/uploads/sites/11/2019/04/Pasutri-Gaje-Season-3-Dafunda-Otaku.jpg'
-                }, {
-                    title: 'Naruto',
-                    img: 'https://www.awn.com/sites/default/files/styles/inline/public/image/featured/1015106-naruto-shippuden-headed-cartoon-network.jpg'
-                }, {
-                    title: 'Naruto1',
-                    img: 'https://www.awn.com/sites/default/files/styles/inline/public/image/featured/1015106-naruto-shippuden-headed-cartoon-network.jpg'
-                }, {
-                    title: 'Naruto2',
-                    img: 'https://www.awn.com/sites/default/files/styles/inline/public/image/featured/1015106-naruto-shippuden-headed-cartoon-network.jpg'
-                }, {
-                    title: 'Naruto3',
-                    img: 'https://www.awn.com/sites/default/files/styles/inline/public/image/featured/1015106-naruto-shippuden-headed-cartoon-network.jpg'
-                }, {
-                    title: 'Naruto4',
-                    img: 'https://www.awn.com/sites/default/files/styles/inline/public/image/featured/1015106-naruto-shippuden-headed-cartoon-network.jpg'
-                }
-            ],
+            dataSource: '',
         };
+    }
+
+    componentDidMount() {
+        axios.get(`${API_TOON}/api/v1/comics`)
+            .then(result => {
+                this.setState({
+                    dataSource: result.data
+                })
+                console.log(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-                <Search style={styles.search} />
-                <ImageSlide />
+                <View style={styles.searchStyleView}>
+                    <Search />
+                    {/* <Item rounded>
+                        <Input placeholder='Search' onChangeText={text => { this.setState({ search: text }) }} />
+                        <View>
+                            <Button transparent>
+                                <Icon active name='md-search' style={styles.search} />
+                            </Button>
+                        </View>
+                    </Item> */}
+                    <ImageSlide />
+                </View>
                 <View style={{ paddingVertical: 10 }}>
                     <Text style={{ fontSize: 30 }}>
                         Favorite
@@ -52,14 +55,16 @@ export default class HomeScreen extends Component {
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({ item }) =>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
-                                    <View style={{ margin: 10 }}>
-                                        <View style={{ borderWidth: 3 }}>
-                                            <Image style={{ height: 150, width: 150 }} source={{ uri: item.img }} />
+                                <Card>
+                                    <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
+                                        <View>
+                                            <View style={styles.imgBorderVertical}>
+                                                <Image style={{ height: 150, width: 150 }} source={{ uri: item.bumpImg }} />
+                                            </View>
+                                            <Text style={{ fontSize: 16, marginTop: 5 }}>{item.title}</Text>
                                         </View>
-                                        <Text style={{ fontSize: 15 }}>{item.title}</Text>
-                                    </View>
-                                </TouchableOpacity>
+                                    </CardItem>
+                                </Card>
                             }
                             keyExtractor={(item, index) => index.toString()
                             } />
@@ -74,23 +79,24 @@ export default class HomeScreen extends Component {
                         data={this.state.dataSource}
                         horizontal={false}
                         renderItem={({ item }) =>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
-                                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                                    <View style={{ borderWidth: 2, padding: 3 }}>
-                                        <Image style={{ height: 50, width: 50 }} source={{ uri: item.img }} />
-                                    </View>
-                                    <View style={{ paddingHorizontal: 5, paddingTop: 2, flex: 1 }}>
-                                        <Text style={{ fontSize: 17 }}>{item.title}</Text>
-                                        <View style={{ width: 100 }}>
-                                            <Button small warning style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                                <Icon name='add' />
-                                                <Text>Favorite</Text>
-                                            </Button>
+                            <Card>
+                                <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
+                                    <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+                                        <View style={{ borderWidth: 2, borderColor: '#ecf0f1', padding: 3 }}>
+                                            <Image style={{ height: 50, width: 50 }} source={{ uri: item.thumbImg }} />
+                                        </View>
+                                        <View style={{ paddingHorizontal: 5, paddingTop: 2, flex: 1 }}>
+                                            <Text style={{ fontSize: 17 }}>{item.title}</Text>
+                                            <View style={{ width: 100 }}>
+                                                <Button small style={{ justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#01CB75' }}>
+                                                    <Icon name='add' />
+                                                    <Text style={{ color: 'white' }}>Favorite</Text>
+                                                </Button>
+                                            </View>
                                         </View>
                                     </View>
-                                </View>
-                            </TouchableOpacity>
-
+                                </CardItem>
+                            </Card>
                         }
                         keyExtractor={(item, index) => index.toString()
                         }
@@ -103,14 +109,22 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+    searchStyleView: {
+        marginTop: 20,
+    },
     scrollView: {
-        marginHorizontal: 10,
+        paddingHorizontal: 10,
         flex: 1,
     },
     search: {
-        marginHorizontal: 40
+        marginHorizontal: 40,
+        color: '#01CB75'
     },
     favHorizontal: {
         flexDirection: 'row'
+    },
+    imgBorderVertical: {
+        borderColor: '#ecf0f1',
+        borderWidth: 2
     }
 });

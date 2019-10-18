@@ -27,9 +27,22 @@ exports.login = (req, res) => {
 }
 
 exports.register = async (req, res) => {
-    const signUp = await User.create(req.body).then({})
+    const { email, username, password, image } = req.body
+    const signUp = await User.findOrCreate({
+        where: { email },
+        defaults: {
+            email: email,
+            password: password,
+            username: username,
+            image: image,
+            createdAt: new Date(),
+            updateAt: new Date()
+        }
+    })
+        .then({})
     res.send({
         message: "success",
         email: signUp.email
-    })
+    }).catch(err)
+    console.log(err)
 }

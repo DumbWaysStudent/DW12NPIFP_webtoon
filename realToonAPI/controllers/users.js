@@ -10,7 +10,7 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    User.create(req.body).then(result => {
+    User.findOrCreate(req.body).then(result => {
         res.send({
             message: "success",
             result

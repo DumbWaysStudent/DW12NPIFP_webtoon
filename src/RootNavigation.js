@@ -39,6 +39,7 @@ const LoginNav = createStackNavigator({
         screen: MainNavigation,
         navigationOptions: {
             header: null,
+            gesturesEnabled: false,
         }
     },
     DetailWebtoon: {
