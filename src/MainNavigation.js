@@ -14,6 +14,7 @@ const MemberNav = createBottomTabNavigator({
         screen: HomeScreen,
         navigationOptions: {
             tabBarLabel: 'For You',
+            // tabBarIcon: ({ tintColor }) => (<Icon name="ios-menu" color={tintColor} size={24} />)
 
         }
     },

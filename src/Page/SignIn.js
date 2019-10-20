@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, Image, } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image, AsyncStorage } from 'react-native';
 import { Item, Input, Button, Icon } from 'native-base';
-import AsyncStorage from '@react-native-community/async-storage';
 
 import { API_TOON } from '../component/server'
 import axios from 'axios';

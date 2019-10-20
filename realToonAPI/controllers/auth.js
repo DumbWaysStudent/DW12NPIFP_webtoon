@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const models = require('../../models')
+const models = require('../models')
 const User = models.users
 
 //bisa menggunakan async await atau .then .catch 
@@ -14,7 +14,7 @@ exports.login = (req, res) => {
             if (user) {
                 const token = jwt.sign({ userId: user.id }, 'my-secret-key')
                 res.send({
-                    username: user.username,
+                    message: "success",
                     token
                 })
             } else {
@@ -41,8 +41,7 @@ exports.register = async (req, res) => {
     })
         .then({})
     res.send({
-        message: "success",
-        email: signUp.email
+        message: "success Sign Up",
     }).catch(err)
     console.log(err)
 }

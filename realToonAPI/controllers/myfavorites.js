@@ -1,4 +1,4 @@
-const models = require('../../models')
+const models = require('../models')
 const myfavorites = models.my_favorite
 
 exports.getMyFavorite = (req, res) => {

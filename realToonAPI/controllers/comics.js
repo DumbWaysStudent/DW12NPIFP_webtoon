@@ -1,4 +1,4 @@
-const models = require('../../models')
+const models = require('../models')
 const Webtoons = models.comics
 const Users = models.users
 // const Genres = models.genres

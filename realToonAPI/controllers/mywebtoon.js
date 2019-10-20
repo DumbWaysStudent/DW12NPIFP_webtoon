@@ -1,4 +1,4 @@
-const models = require('../../models')
+const models = require('../models')
 const Webtoons = models.comics
 const DetailWebtoons = models.detailComics
 const DetailEpisodes = models.detailepisodes
@@ -12,6 +12,10 @@ exports.showMyWebtoon = (req, res) => {
         where: { createdBy: req.params.id }
     })
         .then(result => res.send(result))
+        .catch(err => res.send({
+            message: 'tidak bisa menampilkan komik',
+            err
+        }))
 }
 
 //MEMBUAT KOMIK MILIK SENDIRI
@@ -20,6 +24,10 @@ exports.storeMyWebtoon = (req, res) => {
         .then(
             result => res.send(result)
         )
+        .catch(err => res.send({
+            message: 'tidak bisa membuat komik',
+            err
+        }))
 }
 
 exports.updateMyWebtoon = (req, res) => {
@@ -33,6 +41,10 @@ exports.updateMyWebtoon = (req, res) => {
         {
             where: { id: req.params.id_comic, createdBy: req.params.id_user }
         }).then(res.send(req.body))
+        .catch(err => res.send({
+            message: 'tidak bisa mengupdate komik',
+            err
+        }))
 }
 
 exports.deleteMyWebtoon = (req, res) => {
@@ -44,6 +56,10 @@ exports.deleteMyWebtoon = (req, res) => {
         .then(res.send({
             id: idComic,
             message: 'Komik Telah Dihapus'
+        }))
+        .catch(err => res.send({
+            message: 'tidak bisa menghapus komik',
+            err
         }))
 }
 
@@ -131,6 +147,10 @@ exports.storeDetailMyWebtoon = (req, res) => {
         image
     })
         .then(result => res.send(result))
+        .catch(err => res.send({
+            message: 'tidak bisa menambahkan episode',
+            err
+        }))
 }
 
 //DELETE DETAIL EPISODE DARI KOMIK KITA SENDIRI
@@ -142,5 +162,9 @@ exports.deleteDetailMyWebtoon = (req, res) => {
     })
         .then(res.send({
             message: 'Berhasil di delete'
+        }))
+        .catch(err => res.send({
+            message: 'tidak bisa menghapus episode',
+            err
         }))
 }

@@ -1,4 +1,4 @@
-const models = require('../../models')
+const models = require('../models')
 const DetailWebtoons = models.detailComics
 
 //GET SEMUA DETAIL KOMIK

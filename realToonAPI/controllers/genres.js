@@ -1,4 +1,4 @@
-const models = require('../../models')
+const models = require('../models')
 const genre = models.genres
 
 exports.index = (req, res) => {
