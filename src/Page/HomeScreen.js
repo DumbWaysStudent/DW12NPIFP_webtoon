@@ -8,8 +8,11 @@ import { API_TOON } from '../component/server'
 import Search from '../component/Search';
 import ImageSlide from './../component/ImageSlide'
 
+import { connect } from 'react-redux'
+import * as actionComics from './../redux/actions/actionComics'
 
-export default class HomeScreen extends Component {
+
+class HomeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,32 +20,24 @@ export default class HomeScreen extends Component {
         };
     }
 
-    componentDidMount() {
-        axios.get(`${API_TOON}/api/v1/comics`)
-            .then(result => {
-                this.setState({
-                    dataSource: result.data
-                })
-                console.log(result)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    async componentDidMount() {
+        await this.props.handleGetComics()
     }
 
     render() {
+        const dataComics = this.props.comicsLocal.comics
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
                 <View style={styles.searchStyleView}>
-                    <Search />
-                    {/* <Item rounded>
+                    {/* <Search /> */}
+                    <Item rounded>
                         <Input placeholder='Search' onChangeText={text => { this.setState({ search: text }) }} />
                         <View>
-                            <Button transparent>
+                            <Button transparent onPress={() => this.search(this.state.search)}>
                                 <Icon active name='md-search' style={styles.search} />
                             </Button>
                         </View>
-                    </Item> */}
+                    </Item>
                     <ImageSlide />
                 </View>
                 <View style={{ paddingVertical: 10 }}>
@@ -51,12 +46,12 @@ export default class HomeScreen extends Component {
                     </Text>
                     <View>
                         <FlatList
-                            data={this.state.dataSource}
+                            data={dataComics}
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({ item }) =>
                                 <Card>
-                                    <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
+                                    <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { id: item.id, title: item.title })}>
                                         <View>
                                             <View style={styles.imgBorderVertical}>
                                                 <Image style={{ height: 150, width: 150 }} source={{ uri: item.bumpImg }} />
@@ -76,11 +71,11 @@ export default class HomeScreen extends Component {
                 </Text>
                 <View>
                     <FlatList
-                        data={this.state.dataSource}
+                        data={dataComics}
                         horizontal={false}
                         renderItem={({ item }) =>
                             <Card>
-                                <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { item })}>
+                                <CardItem button onPress={() => this.props.navigation.navigate('DetailWebtoon', { id: item.id, title: item.title })}>
                                     <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                                         <View style={{ borderWidth: 2, borderColor: '#ecf0f1', padding: 3 }}>
                                             <Image style={{ height: 50, width: 50 }} source={{ uri: item.thumbImg }} />
@@ -128,3 +123,20 @@ const styles = StyleSheet.create({
         borderWidth: 2
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        comicsLocal: state.comics
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetComics: () => dispatch(actionComics.handleGetComics()),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HomeScreen);

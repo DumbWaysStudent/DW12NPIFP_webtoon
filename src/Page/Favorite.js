@@ -52,11 +52,12 @@ export default class Favorite extends Component {
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-                <View style={styles.divSlide}>
-                    <Item regular>
+                <View style={styles.searchStyleView}>
+                    {/* <Search /> */}
+                    <Item rounded>
                         <Input placeholder='Search' onChangeText={text => { this.setState({ search: text }) }} />
-                        <View style={styles.searchBut}>
-                            <Button transparent onPress={() => { this.SearchFunc() }}>
+                        <View>
+                            <Button transparent onPress={() => this.search(this.state.search)}>
                                 <Icon active name='md-search' style={styles.search} />
                             </Button>
                         </View>
@@ -101,10 +102,9 @@ const styles = StyleSheet.create({
     search: {
         marginHorizontal: 40
     },
-    divSlide: {
-        flex: 1,
-        marginVertical: 10,
-        borderWidth: 2,
+    searchStyleView: {
+        marginTop: 20,
+        marginBottom: 15
     },
     searchBut: {
         marginRight: 20,

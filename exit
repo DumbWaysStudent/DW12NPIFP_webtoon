@@ -1,0 +1,38 @@
+* [33mfccbc87[m[33m ([m[1;36mHEAD -> [m[1;32m28.delete_image_implementation[m[33m)[m setting ulang restAPI & setting awal sebelum menjalankan redux
+* [33m88b862f[m[33m ([m[1;31morigin/28.delete_image_implementation[m[33m)[m delete_image_implementation
+* [33m193ed9a[m add delete image implementation
+* [33maac8c34[m[33m ([m[1;31morigin/27.create_image_implementation[m[33m, [m[1;32m27.create_image_implementation[m[33m)[m add create image implementation
+* [33m1f33eff[m[33m ([m[1;31morigin/26.delete_my_episode_implementation[m[33m, [m[1;32m26.delete_my_episode_implementation[m[33m)[m add delete my episode implementation
+* [33m6464293[m[33m ([m[1;31morigin/25.update_detail_my_episode_implementation[m[33m, [m[1;32m25.update_detail_my_episode_implementation[m[33m)[m add update / detail my episode implementation
+* [33mbb51e09[m[33m ([m[1;31morigin/24.create_my_episode_implementation[m[33m, [m[1;32m24.create_my_episode_implementation[m[33m)[m add create mu episode implementation
+* [33m80776d1[m[33m ([m[1;31morigin/23.delete_my_webtoon_implementation[m[33m, [m[1;32m23.delete_my_webtoon_implementation[m[33m)[m add delete my webtoon implementation
+* [33m0b4602a[m[33m ([m[1;31morigin/22.update_detail_my_webtoon_implementation[m[33m, [m[1;32m22.update_detail_my_webtoon_implementation[m[33m)[m add update / detail my webtoon implementation
+* [33m3fa0734[m[33m ([m[1;31morigin/21.create_my_webtoon_implementation[m[33m, [m[1;32m21.create_my_webtoon_implementation[m[33m)[m add create my webtoon implementation
+* [33mbb9b129[m[33m ([m[1;31morigin/20.my_webtoon_creation_implementation[m[33m, [m[1;32m20.my_webtoon_creation_implementation[m[33m)[m add my webtoon creation implementation
+* [33m85fa6df[m[33m ([m[1;31morigin/19.search_webtoon_implementation[m[33m, [m[1;32m19.search_webtoon_implementation[m[33m)[m add search webtoon implementation
+* [33m932b4b6[m[33m ([m[1;31morigin/18.favorite_implementation[m[33m, [m[1;32m18.favorite_implementation[m[33m)[m add favorite implemantation
+* [33m0da8248[m[33m ([m[1;31morigin/17.detail_episode_implementation[m[33m, [m[1;32m17.detail_episode_implementation[m[33m)[m add detail episode implementation
+* [33m8804cc7[m[33m ([m[1;31morigin/16.detail_webtoon_implementation[m[33m, [m[1;32m16.detail_webtoon_implementation[m[33m)[m add detail webtoon implementation
+* [33m8148419[m[33m ([m[1;31morigin/15.for_you_implementation[m[33m, [m[1;32m15.for_you_implementation[m[33m)[m add for you implementation
+* [33mf4c5d1c[m[33m ([m[1;31morigin/14.register_implementation[m[33m, [m[1;32m14.register_implementation[m[33m)[m add register implementation & setting ulang requelize
+* [33m775ff05[m add register implementation & setting ualng sequelize
+* [33m96bdb9f[m add register implementation
+* [33m0f24355[m[33m ([m[1;31morigin/13.login_implementation[m[33m, [m[1;32m13.login_implementation[m[33m)[m add login implementation
+* [33m2ee67a8[m[33m ([m[1;31morigin/12.edit_my_webtoon_episode_screen[m[33m, [m[1;32m12.edit_my_webtoon_episode_screen[m[33m)[m add edit my webtoon episode screen
+* [33mbdb3609[m[33m ([m[1;31morigin/11.edit_my_webtoon_screen[m[33m, [m[1;32m11.edit_my_webtoon_screen[m[33m)[m add edit my webtoon screen
+* [33mcda9bcc[m[33m ([m[1;31morigin/10.create_webtoon_episode_screen[m[33m, [m[1;32m10.create_webtoon_episode_screen[m[33m)[m add create webtoon episode screen
+* [33m20fee31[m[33m ([m[1;31morigin/9.create_webtoon_screen[m[33m, [m[1;32m9.create_webtoon_screen[m[33m)[m add create webtoon screen
+* [33mc18757c[m[33m ([m[1;32m8.my_webtoon_creation_screen[m[33m)[m add my webtoon creation screen
+* [33m505596b[m[33m ([m[1;31morigin/8.my_webtoon_creation_screen[m[33m)[m add my webtoon creation screen
+* [33m54887a2[m add my webtoon creation screen
+* [33ma9602da[m add my webtoon creation screen
+* [33m6d15ad7[m[33m ([m[1;31morigin/7.edit_profile_screen[m[33m, [m[1;32m7.edit_profile_screen[m[33m)[m add edit profile screen
+[31m|[m * [33mcc09975[m[33m ([m[1;31morigin/6.profile_screen[m[33m, [m[1;32m6.profile_screen[m[33m)[m add profile screen
+[31m|[m[31m/[m  
+* [33m8a97d35[m[33m ([m[1;31morigin/5.my_favourite_screen[m[33m, [m[1;32m5.my_favourite_screen[m[33m)[m add my favourite screen
+* [33mfeb1cb8[m add my favourite screen
+* [33m076d18e[m[33m ([m[1;31morigin/4.detail_episode_screen[m[33m, [m[1;32m4.detail_episode_screen[m[33m)[m add detail episode screen
+* [33maaa3136[m[33m ([m[1;31morigin/3.detail_webtoon_screen[m[33m, [m[1;32m3.detail_webtoon_screen[m[33m)[m add detail webtoon screen
+* [33m3b9e0f3[m[33m ([m[1;31morigin/2.for_you_screen[m[33m, [m[1;32m2.for_you_screen[m[33m)[m add for you screen
+* [33mc40f932[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/1.login_screen_[m[33m, [m[1;32m1.login_screen_[m[33m, [m[1;32m1.login_screen[m[33m)[m add login screen
+* [33mfc15523[m[33m ([m[1;31morigin/1.login_screen[m[33m)[m add login screen

@@ -7,7 +7,7 @@ require('express-group-routes')
 //use express in app variable
 const app = express()
 //define the server port
-const port = 5000
+const port = process.env.PORT || 4000
 
 //allow this app to receive incoming json request
 app.use(bodyParser.json())
@@ -17,9 +17,9 @@ app.use(bodyParser.json())
 //create the homepage route
 //app dari express app variable
 //req for request & res for respon
-// app.get('/', (req, res) => {
-//     res.send('Hello Express')
-// })
+app.get('/', (req, res) => {
+    res.send('API SUCCESS')
+})
 // app.get('/todos', (req, res) => {
 //     res.send(todos)
 // })

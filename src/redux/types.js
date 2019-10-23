@@ -1,1 +1,5 @@
-export const POST_USERS = 'POST_USERS'
+// export const LOGIN_USERS = 'LOGIN_USERS'
+// export const REGISTER_USERS = 'REGISTER_USERS'
+
+export const GET_COMICS = 'GET_COMICS'
+export const GET_DETAILCOMICS = 'GET_DETAILCOMICS'

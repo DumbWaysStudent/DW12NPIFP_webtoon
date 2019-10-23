@@ -45,11 +45,12 @@ const LoginNav = createStackNavigator({
     DetailWebtoon: {
         screen: DetailWebtoon,
         navigationOptions: {
-            headerTitle: 'The Secret of Angel',
-            headerRight: <Icon name="share" size={35} />,
-            headerRightContainerStyle: {
-                marginEnd: 15,
-            },
+            // headerTitle: 'The Secret of Angel',
+            // headerRight: <Icon name="share" size={35} />,
+            // headerRightContainerStyle: {
+            //     marginEnd: 15,
+            // },
+            header: null,
         }
     },
     DetailEpisode: {
