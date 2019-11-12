@@ -14,10 +14,28 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      idDetailComics: {
+      idUsers: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'detailComics',
+          model: 'users',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      idComics: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'comics',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      idListEpisodes: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'listEpisodes',
           key: 'id'
         },
         onUpdate: 'cascade',

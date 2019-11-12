@@ -8,10 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title_genre: {
-        type: Sequelize.STRING
-      },
-      description: {
+      title: {
         type: Sequelize.STRING
       },
       createdAt: {

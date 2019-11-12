@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const genres = sequelize.define('genres', {
-    title_genre: DataTypes.STRING,
-    description: DataTypes.STRING
+    title: DataTypes.STRING
   }, {});
-  genres.associate = function(models) {
+  genres.associate = function (models) {
     // associations can be defined here
+    genres.hasMany(models.comics, { foreignKey: 'genre' })
   };
   return genres;
 };

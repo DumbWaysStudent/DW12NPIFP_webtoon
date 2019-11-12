@@ -45,22 +45,13 @@ const LoginNav = createStackNavigator({
     DetailWebtoon: {
         screen: DetailWebtoon,
         navigationOptions: {
-            // headerTitle: 'The Secret of Angel',
-            // headerRight: <Icon name="share" size={35} />,
-            // headerRightContainerStyle: {
-            //     marginEnd: 15,
-            // },
             header: null,
         }
     },
     DetailEpisode: {
         screen: DetailEpisode,
         navigationOptions: {
-            headerTitle: 'Episode 1',
-            headerRight: <Icon name="share" size={35} />,
-            headerRightContainerStyle: {
-                marginEnd: 15,
-            },
+            header: null,
         }
     },
     EditProfile: {
@@ -72,7 +63,7 @@ const LoginNav = createStackNavigator({
     MyWebtoon: {
         screen: MyWebtoon,
         navigationOptions: {
-            headerTitle: 'My Webtoon'
+            headerTitle: 'My Webtoons'
         }
     },
     EditMyWebtoon: {
@@ -103,7 +94,7 @@ const LoginNav = createStackNavigator({
 const onShare = async () => {
     try {
         const result = await Share.share({
-            message: 'Aplikasi Webtoon Ardi ini',
+            message: 'test',
         });
         if (result.action === Share.sharedAction) {
             if (result.activityType) {

@@ -11,6 +11,9 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.STRING
+      },
       genre: {
         type: Sequelize.INTEGER,
         references: {
@@ -20,10 +23,7 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      bumpImg: {
-        type: Sequelize.STRING
-      },
-      thumbImg: {
+      imgComics: {
         type: Sequelize.STRING
       },
       createdBy: {

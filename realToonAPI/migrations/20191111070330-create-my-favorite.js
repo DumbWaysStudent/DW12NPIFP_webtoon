@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      webtoon_id: {
+      comic_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'comics',
@@ -27,7 +27,7 @@ module.exports = {
         onDelete: 'cascade'
       },
       isFavorite: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

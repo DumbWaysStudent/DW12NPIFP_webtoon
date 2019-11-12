@@ -49,7 +49,7 @@ export default class SignIn extends Component {
     demoAkun = () => {
         const { inputEmail, inputPassword } = this.state
         this.setState({
-            inputEmail: 'admi@a.com',
+            inputEmail: 'admin@gmail.com',
             inputPassword: 'admin'
         })
     }
@@ -76,6 +76,7 @@ export default class SignIn extends Component {
                     <Button rounded style={styles.buttonLogin} onPress={() => this.demoAkun()}>
                         <Text style={styles.textButtonSignIn}> DEMO </Text>
                     </Button>
+                    <Text onPress={() => this.props.navigation.navigate('signup')} style={{ color: 'white' }}>If you dont have account please Klik Me</Text>
                 </View>
 
             </View>

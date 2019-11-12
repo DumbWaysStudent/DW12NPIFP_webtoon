@@ -1,92 +1,57 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, ScrollView, FlatList, TouchableOpacity, StatusBar, Share } from 'react-native';
+import { Button, Icon, Header, Left, Body, Right, Title } from 'native-base';
 
-export default class DetailEpisode extends Component {
+import { connect } from 'react-redux'
+import * as actionComics from './../redux/actions/actionComics'
+
+const shareOption = {
+    title: "Download realToon",
+    message: "Download segera realToon di PlayStore anda"
+}
+
+class DetailEpisode extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: [
-                {
-                    id: 0,
-                    title: 'The Secret of Angel',
-                    episode: 1,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 1,
-                    title: 'The Secret of Angel',
-                    episode: 2,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 2,
-                    title: 'The Secret of Angel',
-                    episode: 3,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 3,
-                    title: 'The Secret of Angel',
-                    episode: 4,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 4,
-                    title: 'The Secret of Angel',
-                    episode: 5,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 5,
-                    title: 'The Secret of Angel',
-                    episode: 6,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 6,
-                    title: 'The Secret of Angel',
-                    episode: 7,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 7,
-                    title: 'The Secret of Angel',
-                    episode: 8,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-                {
-                    id: 8,
-                    title: 'The Secret of Angel',
-                    episode: 9,
-                    img: 'https://i.ytimg.com/vi/hNKk5qf9JMI/maxresdefault.jpg',
-                    datePost: '20 Oktober 2019'
-                },
-            ],
+            dataSource: '',
         };
     }
+    async componentDidMount() {
+        await this.props.handleGetDetailEpisodes(this.props.navigation.getParam('id_episode'))
+    }
+    onSharePress = () =>
+        Share.share(shareOption);
 
     render() {
+        const dataDetailEpisodes = this.props.detailEpisodesLocal.detailEpisodes
         return (
-            <ScrollView>
+            < ScrollView >
+                <Header style={{ backgroundColor: '#01CB75' }}>
+                    <StatusBar backgroundColor="#01CB75" barStyle="light-content" />
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.goBack()}>
+                            <Icon name='arrow-round-back' style={{ color: 'white' }} />
+                        </Button>
+                    </Left>
+                    <Body style={{ paddingLeft: 15 }}>
+                        <Title style={{ color: 'white' }}>{this.props.navigation.getParam('title')}</Title>
+                    </Body>
+                    <Right>
+                        <Button transparent onPress={this.onSharePress}>
+                            <Icon name='share' style={{ color: 'white' }} />
+                        </Button>
+                    </Right>
+                </Header>
+
                 <View>
                     <FlatList
-                        data={this.state.dataSource}
+                        data={dataDetailEpisodes}
                         horizontal={false}
                         renderItem={({ item }) =>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailEpisode', { item })}>
-                                <View>
-                                    <Image style={{ height: 500, width: 500 }} source={{ uri: item.img }} />
-                                </View>
-                            </TouchableOpacity>
-
+                            <View>
+                                <Image style={{ height: 500, width: 500 }} source={{ uri: item.image }} />
+                            </View>
                         }
                         keyExtractor={(item, index) => index.toString()
                         }
@@ -96,3 +61,21 @@ export default class DetailEpisode extends Component {
         );
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        detailEpisodesLocal: state.detailEpisodes
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetDetailEpisodes: (id_episode) => dispatch(actionComics.handleGetDetailEpisodes(id_episode)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DetailEpisode);

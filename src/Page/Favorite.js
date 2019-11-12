@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet, FlatList, TouchableOpacity, StatusBar, AsyncStorage } from 'react-native';
 import { Item, Input, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
+import jwt_decode from 'jwt-decode';
+
+import { connect } from 'react-redux'
+import * as actionComics from './../redux/actions/actionComics'
 
 import Search from '../component/Search';
 
-export default class Favorite extends Component {
+class Favorite extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,6 +33,15 @@ export default class Favorite extends Component {
             onClick: false
         };
     }
+
+    async componentDidMount() {
+        const token = await AsyncStorage.getItem('userToken')
+        const id = jwt_decode(token)
+        const idUser = id.userId
+
+        await this.props.handleGetFavorites(idUser, token)
+    }
+
     dataSearch() {
         if (this.state.search) {
             return this.state.data
@@ -50,8 +63,11 @@ export default class Favorite extends Component {
     }
 
     render() {
+        const dataFavorites = this.props.favoritesLocal.favorites
+        console.log(dataFavorites)
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+                <StatusBar backgroundColor="#01CB75" barStyle="light-content" />
                 <View style={styles.searchStyleView}>
                     {/* <Search /> */}
                     <Item rounded>
@@ -99,17 +115,31 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         flex: 1,
     },
-    search: {
-        marginHorizontal: 40
-    },
     searchStyleView: {
         marginTop: 20,
-        marginBottom: 15
-    },
-    searchBut: {
-        marginRight: 20,
     },
     search: {
-        fontSize: 20
-    }
+        marginHorizontal: 16,
+        color: '#01CB75',
+        fontSize: 24,
+    },
 });
+
+//for reducer
+const mapStateToProps = state => {
+    return {
+        favoritesLocal: state.comics
+    }
+}
+
+//for action
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetFavorites: (idUser, token) => dispatch(actionComics.handleGetFavorites(idUser, token)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Favorite);

@@ -4,7 +4,8 @@ const initialState = {
     isLoading: false,
     isError: false,
     isSuccess: false,
-    comics: []
+    comics: [],
+    favorites: []
 };
 
 export default function reducerComics(state = initialState, action) {
@@ -24,6 +25,26 @@ export default function reducerComics(state = initialState, action) {
             };
 
         case `${types.GET_COMICS}_REJECTED`:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            };
+        case `${types.GET_FAVORITES}_PENDING`:
+            return {
+                ...state,
+                isLoading: true
+            };
+
+        case `${types.GET_FAVORITES}_FULFILLED`:
+            return {
+                ...state,
+                isLoading: false,
+                isSuccess: true,
+                favorites: action.payload.data
+            };
+
+        case `${types.GET_FAVORITES}_REJECTED`:
             return {
                 ...state,
                 isLoading: false,

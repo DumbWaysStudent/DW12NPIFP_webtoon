@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, StatusBar, AsyncStorage } from 'react-native';
 import { Header, Body, Right, Button, Icon, Title } from 'native-base';
+import jwt_decode from 'jwt-decode';
 
-export default class Profile extends Component {
+import { connect } from 'react-redux'
+import * as actionUsers from './../redux/actions/actionUsers'
+
+class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,25 +15,41 @@ export default class Profile extends Component {
         };
     }
 
+
+    async componentDidMount() {
+        const token = await AsyncStorage.getItem('userToken')
+        const id = jwt_decode(token)
+        const idUser = id.userId
+
+        await this.props.handleGetUser(idUser, token)
+
+    };
+    async _handleLogOut() {
+        await AsyncStorage.clear();
+        await this.props.navigation.navigate('login')
+    };
+
     render() {
+        const dataUser = this.props.detailUserInfoLocal.detailUser
         return (
-            <View>
-                <Header style={{ backgroundColor: 'white' }}>
+            < View >
+                <Header style={{ backgroundColor: '#01CB75' }}>
+                    <StatusBar backgroundColor="#01CB75" barStyle="light-content" />
                     <Body style={{ paddingLeft: 15 }}>
-                        <Title style={{ color: 'black' }}>Profile</Title>
+                        <Title style={{ color: 'white' }}>Profile</Title>
                     </Body>
                     <Right>
                         <Button transparent onPress={() => this.props.navigation.navigate('EditProfile', {
-                            url: this.state.url,
-                            name: this.state.name
+                            url: dataUser.image,
+                            username: dataUser.username
                         })}>
-                            <Icon name='create' style={{ color: 'black' }} />
+                            <Icon name='create' style={{ color: 'white' }} />
                         </Button>
                     </Right>
                 </Header>
                 <View style={styles.avatarPage}>
-                    <Image style={styles.avatar} source={this.props.navigation.getParam('url') ? this.props.navigation.getParam('url') : this.state.url} />
-                    <Text style={{ fontSize: 25 }}>{this.props.navigation.getParam('name') ? this.props.navigation.getParam('name') : this.state.name}</Text>
+                    <Image style={styles.avatar} source={{ uri: dataUser.image }} />
+                    <Text style={{ fontSize: 25 }}>{dataUser.username}</Text>
                 </View>
                 <View style={styles.buttonView}>
                     <Button full success onPress={() => this.props.navigation.navigate('MyWebtoon')}>
@@ -37,11 +57,11 @@ export default class Profile extends Component {
                     </Button>
                 </View>
                 <View>
-                    <Button full transparent onPress={() => this.props.navigation.navigate('login')}>
+                    <Button full transparent onPress={() => this._handleLogOut(this.props)}>
                         <Text style={{ color: 'red', fontSize: 20, justifyContent: 'flex-start' }}>Log Out</Text>
                     </Button>
                 </View>
-            </View>
+            </View >
         );
     }
 }
@@ -63,3 +83,22 @@ const styles = StyleSheet.create({
     }
 
 });
+
+//For reducer
+const mapStateToProps = state => {
+    return {
+        detailUserInfoLocal: state.detailUser
+    }
+}
+
+//for action
+const mapDispatchToProps = dispatch => {
+    return {
+        handleGetUser: (idUser, token) => dispatch(actionUsers.handleGetUser(idUser, token)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Profile);

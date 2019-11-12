@@ -27,16 +27,21 @@ export default class EditProfile extends Component {
                 skipBackup: true,
             },
         };
-        ImagePicker.showImagePicker(options, res => {
-            let source = { uri: res.uri }
-            if (!res.didCancel) {
-                if (!res.error) {
-                    this.setState({
-                        imageSource: source
-                    })
-                }
+        ImagePicker.showImagePicker(options, response => {
+            console.log('Response = ', response);
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                let source = {uri: response.uri};
+            this.setState({
+                imageSource: source,
+            });
             }
-        })
+        });
     }
 
     render() {
@@ -57,7 +62,7 @@ export default class EditProfile extends Component {
                 </Header>
                 <View style={style.userProfile}>
                     <Image
-                        source={this.state.imageSource}
+                        source={{ uri: this.state.imageSource }}
                         style={{ width: 200, height: 200, borderRadius: 100 }} />
                     <Button
                         primary

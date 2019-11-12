@@ -1,24 +1,37 @@
 const models = require('../models')
 // const Webtoons = models.comics
-const DetailWebtoons = models.detailComics
+const ListEpisodes = models.listEpisodes
 const DetailEpisodes = models.detailepisodes
 
-exports.showEpisodes = (req, res) => {
+exports.showDetailEpisodes = (req, res) => {
     const webtoonId = req.params.id_comic
     const episodeId = req.params.id_episode
 
-    DetailWebtoons.findOne({
-        where: { idComics: webtoonId }
+    DetailEpisodes.findAll({
+        where: { idComics: webtoonId, idListEpisodes: episodeId }
     })
-        .then(() => {
-            DetailEpisodes.findAll({
-                where: { idDetailComics: episodeId },
-                attributes: ['id', 'page', 'image'],
-                include: [{
-                    model: DetailWebtoons,
-                    as: 'detailComicId'
-                }]
+        .then((result) => {
+            res.send({
+                result,
+                message: "Success"
             })
-                .then(episodes => res.send(episodes))
         })
 }
+// exports.showEpisodes = (req, res) => {
+//     const webtoonId = req.params.id_comic
+//     const episodeId = req.params.id_episode
+
+//     ListEpisodes.findOne({
+//         where: { idComics: webtoonId }
+//     })
+//         .then(() => {
+//             DetailEpisodes.findAll({
+//                 where: { idDetailComics: episodeId },
+//                 attributes: ['id', 'page', 'image'],
+//                 include: [{
+//                     model: idListEpisodes,
+//                 }]
+//             })
+//                 .then(episodes => res.send(episodes))
+//         })
+// }

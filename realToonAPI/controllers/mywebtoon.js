@@ -1,6 +1,6 @@
 const models = require('../models')
 const Webtoons = models.comics
-const DetailWebtoons = models.detailComics
+const ListEpisodes = models.listEpisodes
 const DetailEpisodes = models.detailepisodes
 const Users = models.users
 
@@ -31,12 +31,13 @@ exports.storeMyWebtoon = (req, res) => {
 }
 
 exports.updateMyWebtoon = (req, res) => {
-    const { title, genre, bumpImg, thumbImg } = req.body
+    const { title, description, genre, imgComics, createdBy } = req.body
     Webtoons.update({
         title,
+        description,
         genre,
-        bumpImg,
-        thumbImg
+        imgComics,
+        createdBy
     },
         {
             where: { id: req.params.id_comic, createdBy: req.params.id_user }
@@ -69,32 +70,44 @@ exports.deleteMyWebtoon = (req, res) => {
 // url = {your_host}/api/v1/user/{user_id}/webtoon/{webtoon_id}/episodes
 // GET SEMUA DETAIL KOMIK KITA SENDIRI
 exports.showDetailMyWebtoon = (req, res) => {
-    const idComic = req.params.id_comic
-    DetailWebtoons.findAll({ where: { idComics: idComic } }).then(result => res.send(result))
+    const idUser = req.params.id_user;
+    const idComic = req.params.id_comic;
+    ListEpisodes.findAll({ where: { idUser: idUser, idComics: idComic } }).then(result => res.send(result))
 
 }
 
 //MEMBUAT EPISODES DARI KOMIK KITA SENDIRI
 exports.storeMyEpisode = (req, res) => {
-    const { image, title } = req.body
+    const { imgListEpisodes, title } = req.body;
+    const idUser = req.params.id_user;
+    const idComic = req.params.id_comic;
 
-    DetailWebtoons.create({
-        idComics: req.params.id_comic,
+    ListEpisodes.create({
+        idUser: idUser,
+        idComics: idComic,
         title,
-        image
+        imgListEpisodes
     })
         .then(result => res.send(result))
 }
 
 //UPDATE DETAIL EPISODE KOMIK SENDIRI
 exports.updateMyEpisode = (req, res) => {
-    const { image, title } = req.body
+    const { imgListEpisodes, title } = req.body;
+    const idUser = req.params.id_user;
+    const idComic = req.params.id_comic;
 
-    DetailWebtoons.update({
+    ListEpisodes.update({
+        idUser: idUser,
+        idComics: idComic,
         title,
-        image
+        imgListEpisodes
     }, {
-        where: { id: req.params.id_episode }
+        where: {
+            idUser: idUser,
+            idComics: idComic,
+            id: req.params.id_episode
+        }
     }
     )
         .then(res.send({ ...req.body }))
@@ -102,10 +115,16 @@ exports.updateMyEpisode = (req, res) => {
 
 //DELETE EPISODE KOMIK SENDIRI
 exports.deleteMyEpisode = (req, res) => {
-    const { id_episode } = req.params
+    const { id_episode } = req.params;
+    const idUser = req.params.id_user;
+    const idComic = req.params.id_comic;
 
-    DetailWebtoons.destroy({
-        where: { id: id_episode }
+    ListEpisodes.destroy({
+        where: {
+            idUser: idUser,
+            idComics: idComic,
+            id: id_episode
+        }
     })
         .then(res.send({ ...req.body }))
 }
@@ -116,33 +135,54 @@ exports.deleteMyEpisode = (req, res) => {
 //GET SEMUA DETAIL EPISODE BERDASARKAN EPISODE
 
 exports.showDetailEpisodes = (req, res) => {
-    const webtoonId = req.params.id_comic
-    const episodeId = req.params.id_episode
+    const idUsers = req.params.id_user
+    const idComics = req.params.id_comic
+    const idListEpisodes = req.params.id_episode
 
-    DetailWebtoons.findOne({
-        where: { idComics: webtoonId }
+    DetailEpisodes.findAll({
+        where: { idUsers, idComics, idListEpisodes }
     })
-        .then(() => {
-            DetailEpisodes.findAll({
-                where: { idDetailComics: episodeId },
-                attributes: ['id', 'page', 'image'],
-                include: [{
-                    model: DetailWebtoons,
-                    as: 'detailComicId'
-                }]
-            })
-                .then(episodes => res.send(episodes))
-        })
+        .then(episodes => res.send(episodes))
+        .catch(err => res.send({
+            err,
+            message: "Maaf Terjadi Kesalahan"
+        }))
 
 }
+// //GET SEMUA DETAIL EPISODE BERDASARKAN EPISODE
+
+// exports.showDetailEpisodes = (req, res) => {
+//     const webtoonId = req.params.id_comic
+//     const episodeId = req.params.id_episode
+
+//     ListEpisodes.findOne({
+//         where: { idComics: webtoonId }
+//     })
+//         .then(() => {
+//             DetailEpisodes.findAll({
+//                 where: { idDetailComics: episodeId },
+//                 // attributes: ['id', 'page', 'image'],
+//                 include: [{
+//                     model: ListEpisodes,
+//                     as: 'detailComicId'
+//                 }]
+//             })
+//                 .then(episodes => res.send(episodes))
+//         })
+
+// }
 
 //MEMBUAT DETAIL EPISODE DARI KOMIK KITA SENDIRI
 exports.storeDetailMyWebtoon = (req, res) => {
     const { image, page } = req.body
-    const episodeId = req.params.id_episode
+    const idUsers = req.params.id_user
+    const idComics = req.params.id_comic
+    const idListEpisodes = req.params.id_episode
 
     DetailEpisodes.create({
-        idDetailComics: episodeId,
+        idUsers,
+        idComics,
+        idListEpisodes,
         page,
         image
     })

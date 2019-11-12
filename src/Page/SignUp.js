@@ -63,6 +63,7 @@ export default class SignUp extends Component {
                     <Button rounded style={styles.buttonStyle} onPress={() => this.registerValue()}>
                         <Text style={styles.textButtonSignUp}>SIGN UP</Text>
                     </Button>
+                    <Text onPress={() => this.props.navigation.goBack()} style={{ alignSelf: 'center', justifyContent: 'center', color: '#01CB75' }}>If you have account please Klik Me </Text>
                 </View>
             </View >
         );

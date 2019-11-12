@@ -28,10 +28,11 @@ app.get('/', (req, res) => {
 const AuthController = require('./controllers/auth')
 const GenresController = require('./controllers/genres')
 const ComicsController = require('./controllers/comics')
-const DetailComicsController = require('./controllers/detailcomics')
+const ListEpisodesController = require('./controllers/listepisodes')
 const DetailEpisodesController = require('./controllers/detailepisodes')
 const MyFavoritesController = require('./controllers/myfavorites')
 const MyWebtoonsController = require('./controllers/mywebtoon')
+const UserController = require('./controllers/users')
 
 //middleware
 const { authenticated } = require('./middleware')
@@ -43,14 +44,21 @@ app.group('/api/v1', (router) => {
 
     //API genre
     router.get('/genres', GenresController.index)
-    router.get('/genre/:id', GenresController.show)
     router.post('/genre', GenresController.store)
+    router.get('/genre/:id', GenresController.show)
     router.patch('/genre/:id', GenresController.update)
     router.delete('/genre/:id', GenresController.delete)
+    router.get('/genre/:id/comics', GenresController.showComics)
 
     //API comics
     //SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
     router.get('/comics', ComicsController.index)
+
+    //API List Episode
+    router.get('/comic/:id/episodes', ListEpisodesController.showWebtoon)
+
+    //API Detail Episodes
+    router.get('/comic/:id_comic/episode/:id_episode/images', DetailEpisodesController.showDetailEpisodes)
 
     //API MY WEBTOON CREATION
 
@@ -83,20 +91,15 @@ app.group('/api/v1', (router) => {
     //DELETE DETAIL EPISODE KITA
     router.delete('/user/:id_user/comic/:id_comic/episode/:id_episode/image/:id_image', authenticated, MyWebtoonsController.deleteDetailMyWebtoon)
 
-    //API Detail comics
-    router.get('/comic/:id/episodes', DetailComicsController.showWebtoon)
-
-    //API Detail Episodes
-    router.get('/comic/:id_comic/episode/:id_episode', DetailEpisodesController.showEpisodes)
-
     //API My Favorite
     // router.get('/favorite/:id', MyFavoritesController.getMyFavorite)
-    router.get('/favorite/:id', authenticated, MyFavoritesController.getMyFavorite)
+    router.get('/favorite/user/:id', authenticated, MyFavoritesController.getMyFavorite)
+    router.post('/favorite/user/:id_user/comic/:id_comic', authenticated, MyFavoritesController.storeMyFavorite)
 
 
     //user API
+    router.get('/user/:id', authenticated, UserController.show)
     // router.get('/users', UserController.index)
-    // router.get('/user/:id', UserController.show)
     // router.post('/user', UserController.store)
     // router.patch('/user/:id', UserController.update)
     // router.delete('/user/:id', UserController.delete)

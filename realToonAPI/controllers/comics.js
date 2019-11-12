@@ -1,6 +1,7 @@
 const models = require('../models')
 const Webtoons = models.comics
 const Users = models.users
+const Genres = models.genres
 // const Genres = models.genres
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
@@ -8,24 +9,40 @@ const Op = Sequelize.Op;
 
 //SELAIN SEARCH JUGA MENAMPILKAN SEMUA DATA KOMIK
 exports.index = (req, res) => {
-    const title = req.query.title
+    const { title } = req.query
     if (title) {
         //Untuk Pencarian title
         Webtoons.findAll({
             where: { title: { [Op.like]: `%${title}%` } },
-            include: [{
-                model: Users,
-                as: "created_by",
-            }]
+            include: [
+                {
+                    model: Users,
+                    as: 'user_createdBy',
+                    attributes: ['username', 'email']
+                },
+                {
+                    model: Genres,
+                    as: 'genre_name',
+                    attributes: ['title']
+                }
+            ]
         })
             .then(result => res.send(result))
     } else {
         //jika tidak ada maka dikeluarkan semua value
         Webtoons.findAll({
-            include: [{
-                model: Users,
-                as: "created_by",
-            }]
+            include: [
+                {
+                    model: Users,
+                    as: 'user_createdBy',
+                    attributes: ['username', 'email']
+                },
+                {
+                    model: Genres,
+                    as: 'genre_name',
+                    attributes: ['title']
+                }
+            ]
         }).then(result => res.send(result))
     }
 }

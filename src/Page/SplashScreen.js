@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, Image } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image, AsyncStorage } from 'react-native';
 import { Button } from 'native-base';
 
 export default class SplashScreen extends Component {
@@ -7,6 +7,18 @@ export default class SplashScreen extends Component {
         super(props);
         this.state = {
         };
+    }
+    componentDidMount() {
+        this.cekToken()
+    }
+
+    async cekToken() {
+        const token = await AsyncStorage.getItem('userToken')
+        if (token) {
+            this.props.navigation.navigate('MainNavigation')
+        } else {
+            this.props.navigation.navigate('login')
+        }
     }
 
     render() {
@@ -16,14 +28,14 @@ export default class SplashScreen extends Component {
                 <View style={styles.bgImgView} >
                     <Image style={styles.bgImg} source={require('./../assets/imgBg/RealToon.png')} />
                 </View>
-                <View style={styles.buttonStyleView}>
+                {/* <View style={styles.buttonStyleView}>
                     <Button rounded style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('signup')}>
                         <Text style={styles.textButtonSignUp}>SIGN UP</Text>
                     </Button>
                     <Button rounded style={styles.buttonStyleSign} onPress={() => this.props.navigation.navigate('login')}>
                         <Text style={styles.textButtonSignIn}>SIGN IN</Text>
                     </Button>
-                </View>
+                </View> */}
             </View>
         );
     }
@@ -38,7 +50,7 @@ const styles = StyleSheet.create({
     },
     bgImgView: {
         flex: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'center'
     },
     bgImg: {
         width: 250,

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet, FlatList, StatusBar } from 'react-native';
 import { Item, Input, Button, Icon, Card, CardItem, } from 'native-base';
-import axios from 'axios';
-
-import { API_TOON } from '../component/server'
 
 import Search from '../component/Search';
 import ImageSlide from './../component/ImageSlide'
@@ -28,6 +25,7 @@ class HomeScreen extends Component {
         const dataComics = this.props.comicsLocal.comics
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+                <StatusBar backgroundColor="#01CB75" barStyle="light-content" />
                 <View style={styles.searchStyleView}>
                     {/* <Search /> */}
                     <Item rounded>
@@ -107,13 +105,13 @@ const styles = StyleSheet.create({
     searchStyleView: {
         marginTop: 20,
     },
-    scrollView: {
-        paddingHorizontal: 10,
-        flex: 1,
-    },
     search: {
         marginHorizontal: 40,
         color: '#01CB75'
+    },
+    scrollView: {
+        paddingHorizontal: 10,
+        flex: 1,
     },
     favHorizontal: {
         flexDirection: 'row'
@@ -124,12 +122,14 @@ const styles = StyleSheet.create({
     }
 });
 
+//for reducer
 const mapStateToProps = state => {
     return {
         comicsLocal: state.comics
     }
 }
 
+//for action
 const mapDispatchToProps = dispatch => {
     return {
         handleGetComics: () => dispatch(actionComics.handleGetComics()),

@@ -24,6 +24,7 @@ exports.login = (req, res) => {
                 })
             }
         })
+        .catch(err => res.send(err))
 }
 
 exports.register = async (req, res) => {
@@ -34,7 +35,7 @@ exports.register = async (req, res) => {
             email: email,
             password: password,
             username: username,
-            image: image,
+            // image: image,
             createdAt: new Date(),
             updateAt: new Date()
         }
@@ -42,6 +43,6 @@ exports.register = async (req, res) => {
         .then({})
     res.send({
         message: "success Sign Up",
-    }).catch(err)
+    }).catch(err => res.send(err))
     console.log(err)
 }

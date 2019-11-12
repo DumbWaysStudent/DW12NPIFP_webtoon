@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, FlatList, TouchableOpacity, StatusBar, Share } from 'react-native';
 import { Button, Icon, Header, Left, Body, Right, Title } from 'native-base';
-import axios from 'axios';
 
-import { API_TOON } from '../component/server'
 import { connect } from 'react-redux'
 import * as actionComics from './../redux/actions/actionComics'
 
@@ -55,7 +53,7 @@ class DetailWebtoon extends Component {
                             data={dataDetailComics}
                             horizontal={false}
                             renderItem={({ item }) =>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailEpisode', { id: item.id })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailEpisode', { id_episode: item.id, title: item.title })}>
                                     <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                                         <View style={styles.thumbImgStyle}>
                                             <Image style={{ height: 50, width: 50 }} source={{ uri: item.thumbImg }} />
